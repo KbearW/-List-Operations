@@ -46,14 +46,17 @@ def custom_append(input_list, value):
         True
 
     """
-#     new_list = [value]
-#     input_list_copy = input_list
-#     input_list = input_list_copy + new_list
-#     return input_list
-# print(custom_append(['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Ti', 'Do'], 'Re'))
+    input_list[-1:-1] = value
+    # new_list = [value]
+    # input_list_copy = input_list
+    # input_list = input_list_copy + new_list
+    # print(id(input_list))
+    # print(id(input_list_copy))
+    # return input_list
+# print(custom_append(['Do', 'Re', 'Mi'  , 'Fa', 'So', 'La', 'Ti', 'Do'], 'Re'))
     # pass
-    list_len = custom_len(input_list)
-    input_list[list_len:list_len] = [value]
+    # list_len = custom_len(input_list)
+    # input_list[list_len:list_len] = [value]
 
 
 
