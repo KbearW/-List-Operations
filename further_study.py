@@ -46,7 +46,7 @@ def custom_append(input_list, value):
         True
 
     """
-    input_list[-1:-1] = value
+    input_list[len(input_list):len(input_list)] = [value]
     # new_list = [value]
     # input_list_copy = input_list
     # input_list = input_list_copy + new_list
@@ -75,7 +75,7 @@ def custom_extend(input_list, second_list):
         True
 
     """
-
+    input_list[len(input_list):len(input_list)] = second_list
     pass
 
 
@@ -93,7 +93,7 @@ def custom_insert(input_list, index, value):
         True
 
     """
-
+    input_list[index:index] = [value]
     pass
 
 
@@ -112,6 +112,13 @@ def custom_remove(input_list, value):
         True
 
     """
+    counter = 0
+    for item in input_list:
+        if item == value:
+            input_list [counter:counter + 1] = []
+            break
+    counter += 1
+    
 
     pass
 
@@ -131,9 +138,10 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-    # new_input = input_list
+
+    # [-1:] is needed bc we are setting the last index as blank.
     last_item = input_list[-1]
-    del input_list[-1]
+    input_list[-1:] = []
     return last_item
 
 
@@ -191,7 +199,8 @@ def custom_reverse(input_list):
 
     """
 ##There might be a bug on this.
-    # input_list = input_list[::-1]
+    input_list[:] = input_list[::-1]
+    # print(input_list)
 
     # new_list = []
     # index = -1
@@ -238,15 +247,12 @@ def custom_contains(input_list, value):
 
     """
 
-    count = 1
+
     for item in input_list:
         if item == value:
             return True
-            break
-        else:
-            count +=1
-    if count > len(input_list):
-        return False
+    
+    return False
     # return None
 
 
@@ -265,7 +271,15 @@ def custom_equality(some_list, another_list):
         False
 
     """
+   
 
+    if len(some_list) != len(another_list):
+        return False
+    else:
+        for i in range(len(some_list)):
+            if some_list[i] != another_list[i]:
+                return False
+        return True
 #    index = 0
 
 #     for item in some_list:
